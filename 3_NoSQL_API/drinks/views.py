@@ -33,7 +33,10 @@ def drink(request, type, id):
         if update_response is not 0:
             return Response(status=status.HTTP_200_OK)
         else:
-            return Response({'error': 'Failed to update'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response(
+                {'error': 'Failed to update'},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
     if request.method == 'DELETE':
         remote.delete_drink(type, id)
         return Response(status=status.HTTP_200_OK)
